@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require("express-session");
-require('dotenv/config');
+require('dotenv/config'); //aula dia 03/06
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
