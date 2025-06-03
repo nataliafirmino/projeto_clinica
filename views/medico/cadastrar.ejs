@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Médico</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/menu') %>
+        <%- include('../partials/cabecalho') %>
+    </div>
+    <div class="container">
+        <% if (status == '1') { %>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <b>CRM já cadastrado. Cadastre um novo Médico.</b>
+            </div>
+        <% } %>
+    <h2 class="text-center mt-3">Cadastrar Médico</h2>
+    <form action="/medicos" method="POST">
+        <input type="hidden" name="_id" value="<%= medico._id %>">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" class="form-control" value="<%= medico.nome %>" id="nome" name="nome">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="crm" class="form-label">CRM:</label>
+                <input type="text" class="form-control" value="<%= medico.crm ? medico.crm : "" %>" <%= medico._id ? "readonly" : "" %> required id="crm" name="crm" maxlength="6">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="uf_crm" class="form-label">Estado do CRM:</label>
+                <input type="text" class="form-control" value="<%= medico.uf_crm ? medico.uf_crm : "" %>" <%= medico._id ? "readonly" : "" %>  required id="uf_crm" name="uf_crm" maxlength="2">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="especialidade" class="form-label">Especialidade:</label>
+                <input type="text" class="form-control" value="<%= medico.especialidade %>" required id="especialidade" name="especialidade">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="telefone" class="form-label">Telefone:</label>
+                <input type="text" class="form-control" value="<%= medico.telefone %>" required id="telefone" name="telefone">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" class="form-control" value="<%= medico.email %>" required id="email" name="email">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="status" class="form-label">Status:</label>
+                <select class="form-select" required id="status" name="status">
+                    <option value="">Selecione</option>
+                    <option value="Ativo" <%= medico.status === 'Ativo' ? 'selected' : '' %>>Ativo</option>
+                    <option value="Inativo" <%= medico.status === 'Inativo' ? 'selected' : '' %>>Inativo</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success"><i class="bi bi-floppy-fill"></i> Salvar</button>
+    </form>
+    <br>
+    <%- include('../partials/rodape') %>
+    </div>
+</body>
+</html>

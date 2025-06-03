@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/cabecalho') %>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
+            
+            <% if (status == '1') { %>
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <b>Erro ao logar!</b>
+                </div>
+            <% } %>
+
+            <h3 class="text-center mb-3">Login</h3>
+
+            <form action="/usuarios/login" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="senha" placeholder="Digite sua senha" required>
+                </div>
+                <div class="text-center mt-3">
+                    <span>Não tem uma conta? <a href="/usuarios/cadastrar">Cadastre-se</a></span>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <%- include('../partials/rodape') %>
+</body>
+</html>

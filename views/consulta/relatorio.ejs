@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Consultas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/menu') %>
+        <%- include('../partials/cabecalho') %>
+    </div>
+
+    <div class="container">
+        <% if (status == '1') { %>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                Agendado com <b>sucesso.</b>
+            </div>
+        <% } %>
+
+        <% if (status == '2') { %>
+            <div class="alert alert-danger">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                Removido com <b>sucesso.</b>
+            </div>
+        <% } %>
+
+        <% if (status == '3') { %>
+            <div class="alert alert-warning">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                Atualizado com <b>sucesso.</b>
+            </div>
+        <% } %>
+
+        <h2 class="text-center mt-3 mb-5">Relatório de Consultas</h2>
+        <div class="row">
+            <% consultas.forEach(consulta => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Paciente:</b> <%= consulta.paciente.nome %></h5>
+                            <p class="card-text"><b>Médico:</b> <%= consulta.medico.nome %></p>
+                            <p class="card-text"><b>Data da Consulta:</b> <%= new Date(consulta.dataConsulta).toLocaleDateString('pt-BR') %></p>
+                            <p class="card-text"><b>Valor:</b> R$ <%= consulta.valor %></p>
+                            <p class="card-text"><b>Status:</b> <%= consulta.status %></p>
+                            <p class="card-text"><b>Agendado em:</b> <%= new Date(consulta.horaAgendamento).toLocaleString('pt-BR') %></p>
+                            
+                            <div class="d-flex justify-content-between mt-3 gap-2">
+                                <a href="/consultas/<%= consulta._id %>" class="btn btn-info btn-sm">
+                                    <i class="bi bi-info-circle"></i> Detalhar
+                                </a>
+                                <a href="/consultas/remover/<%= consulta._id %>" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Deseja realmente remover?')">
+                                    <i class="bi bi-trash"></i> Remover
+                                </a>
+                                <a href="/consultas/agendar/<%= consulta._id %>" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil me-2"></i> Atualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <a href="/">
+            <button type="button" class="btn btn-light mt-4 mb-4">
+                <i class="bi bi-arrow-left-circle"></i> Voltar
+            </button>
+        </a>
+
+        <%- include('../partials/rodape') %>
+    </div>
+</body>
+</html>

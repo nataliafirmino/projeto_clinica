@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consultas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/menu') %>
+            <%- include('../partials/cabecalho') %>
+    </div>
+
+    <div class="container">
+        <% if (status == '1') { %>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <b>Código já existe na consulta. Cadastre um novo código.</b>
+            </div>
+        <% } %>
+        <h2 class="text-center mt-5">Agendar Consultas</h2>
+        <form action="/consultas" method="POST">
+            <input type="hidden" name="_id" value="<%= consulta._id %>">
+            <div class="row mt-5">
+                <div class="col-md-3 mb-4">
+                    <label for="cod" class="form-label">Código da Consulta:</label>
+                    <input type="number" class="form-control" value="<%= consulta.cod %>" id="cod" name="cod">
+                </div>
+                <div class="col-md-8 mb-4">
+                    <label for="medico" class="form-label">Médico:</label>
+                    <select class="form-select" required id="medico" name="medico">
+                        <option value="" disabled <%=!consulta.medico ? 'selected' : '' %>>Selecione um médico</option>
+                        <% medicos.forEach(medico=> { %>
+                            <option value="<%= medico._id %>" <%=consulta.medico==medico._id ? 'selected' : '' %>>
+                                Dr(a). <%= medico.nome %> - <%= medico.crm + '/' + medico.uf_crm %> - <%=
+                                            medico.especialidade %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label for="paciente" class="form-label">Paciente:</label>
+                    <select class="form-select" id="paciente" name="paciente" required>
+                        <option value="" disabled <%=!consulta.paciente ? 'selected' : '' %>>Selecione um paciente
+                        </option>
+                        <% pacientes.forEach(paciente=> { %>
+                            <option value="<%= paciente._id %>" <%=consulta.paciente==paciente._id ? 'selected' : '' %>>
+                                <%= paciente.cpf %> - <%= paciente.nome %> - <%= new
+                                            Date(paciente.dataNascimento).toLocaleDateString('pt-BR') %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <label for="dataConsulta" class="form-label">Data da Consulta:</label>
+                    <input type="date" class="form-control"
+                        value="<%= consulta.dataConsulta ? consulta.dataConsulta.toISOString().split('T')[0] : "" %>"
+                        required id="dataConsulta" name="dataConsulta">
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <label for="valor" class="form-label">Valor da Consulta (R$):</label>
+                    <input type="number" class="form-control" value="<%= consulta.valor %>" id="valor" name="valor">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" > Salvar</button>
+        </form>
+
+        <%- include('../partials/rodape') %>
+    </div>
+</body>
+
+</html>

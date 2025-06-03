@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do paciente</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/menu') %>
+        <%- include('../partials/cabecalho') %>
+
+    </div>
+    <div class="container">
+    <% if (paciente != undefined){ %>
+        <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="text-center mt-3">Detalhes do Paciente</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>CPF:</b> <%= paciente.cpf %></li>
+              <li class="list-group-item"><b>Nome:</b> <%= paciente.nome %></li>
+             <li class="list-group-item"><b>Data de Nascimento:</b> <%= new Date(paciente.dataNascimento).toLocaleDateString('pt-BR') %></li>
+              <li class="list-group-item"><b>Telefone:</b> <%= paciente.telefone %></li>
+              <li class="list-group-item"><b>Endereço:</b> <%= paciente.logradouro + ", " + paciente.numResidencia + ", " + paciente.bairro + ", " + paciente.cidade + " - " + paciente.estado  %></li>
+            </ul>
+          </div>
+
+    <%} else {%>
+        <div>Paciente não encontrado</div>
+    <%} %>
+
+    <br>
+    
+    <a href="/pacientes">
+        <button type="button" class="btn btn-light mb-4">
+            <i class="bi bi-arrow-left-circle"></i> Voltar
+        </button>
+    </a>
+    
+    <%- include('../partials/rodape') %> 
+    </div>
+</body>
+</html>

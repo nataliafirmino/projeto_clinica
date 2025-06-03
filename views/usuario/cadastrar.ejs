@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastrar Usuário</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/cabecalho') %>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow" style="width: 100%; max-width: 450px;">
+            
+            <% if (status == '1') { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <b>Erro ao cadastrar!</b>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+
+            <h2 class="text-center mb-4">Cadastrar Usuários</h2>
+
+            <form action="/usuarios" method="POST">
+                <input type="hidden" name="_id" value="<%= usuario._id %>">
+                
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" value="<%= usuario.nome %>" required id="nome" name="nome" />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" value="<%= usuario.email %>" required id="email" name="email" />
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" required id="senha" name="senha" />
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Salvar</button>
+
+                <div class="text-center mt-3">
+                    <span>Já tem uma conta? <a href="/usuarios/login">Faça login</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <%- include('../partials/rodape') %>
+</body>
+</html>

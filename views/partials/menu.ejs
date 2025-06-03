@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"> Página Inicial</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pacientes
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/pacientes/cadastrar"><i class="bi bi-plus-circle"></i> Cadastrar</a>
+              </li>
+              <li><a class="dropdown-item" href="/pacientes"><i class="bi bi-list-check"></i> Listar</a></li>
+            </ul>
+          </li>
+          <!--Médicos-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Médicos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/medicos/cadastrar"><i class="bi bi-plus-circle"></i> Cadastrar</a>
+              </li>
+              <li><a class="dropdown-item" href="/medicos"><i class="bi bi-list-check"></i> Listar</a></li>
+            </ul>
+          </li>
+          <!--Consultas-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Consultas
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/consultas/agendar"><i class="bi bi-plus-circle"></i> Agendar</a></li>
+              <li><a class="dropdown-item" href="/consultas"><i class="bi bi-list-check"></i> Exibir</a></li>
+            </ul>
+          </li>
+          <!--Usuários-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuário
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/usuarios/cadastrar"><i class="bi bi-plus-circle"></i> Cadastrar</a>
+              </li>
+              <li><a class="dropdown-item" href="/usuarios"><i class="bi bi-list-check"></i> Listar</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        
+          <!-- Logout -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/usuarios/logout">
+              <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</body>
+</html>

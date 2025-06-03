@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Consulta</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <%- include('../partials/menu') %>
+        <%- include('../partials/cabecalho') %>
+
+    </div>
+    <div class="container">
+    <% if (consulta != undefined){ %>
+        <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="text-center mt-3">Detalhes da Consulta</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Paciente:</b> <%= consulta.paciente.nome %></li>
+              <li class="list-group-item"><b>Médico:</b> <%= consulta.medico.nome %></li>
+              <li class="list-group-item"><b>Data da Consulta:</b> <%= new Date(consulta.dataConsulta).toLocaleDateString('pt-BR') %></li>
+              <li class="list-group-item"><b>Valor da Consulta:</b> R$ <%= consulta.valor %></li>
+              <li class="list-group-item"><b>Status:</b> <%= consulta.status %></li>
+              <li class="list-group-item"><b>Agendado em:</b> <%= new Date(consulta.horaAgendamento).toLocaleString('pt-BR') %></li>
+              
+            </ul>
+          </div>
+
+    <%} else {%>
+        <div>Consulta não encontrado</div>
+    <%} %>
+
+    <br>
+    
+    <a href="/consultas">
+        <button type="button" class="btn btn-light mb-4">
+            <i class="bi bi-arrow-left-circle"></i> Voltar
+        </button>
+    </a>
+    
+    <%- include('../partials/rodape') %> 
+    </div>
+</body>
+</html>
