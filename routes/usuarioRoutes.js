@@ -4,7 +4,7 @@ const usuarioController = require('../controllers/usuarioController');
 const auth = require("../middlewares/usuarioAuth");
 
 routes.get('/', auth,  usuarioController.relatorio);
-routes.post('/', auth, usuarioController.cadastrarPost);
+routes.post('/', usuarioController.cadastrarPost);
 routes.get('/cadastrar/:_id?', usuarioController.cadastrarGet);
 routes.post('/login', usuarioController.loginPost);
 routes.get('/login', usuarioController.loginGet);

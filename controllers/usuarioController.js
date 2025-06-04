@@ -19,7 +19,7 @@ class UsuarioController {
     }
 
     static async cadastrarPost(req, res){
-        const { cod,
+        const {
             nome,
             email,
             senha,
@@ -28,20 +28,22 @@ class UsuarioController {
         const salt = bcryptjs.genSaltSync();
         const hash = bcryptjs.hashSync(senha, salt);
         if (_id) {
-            await usuario.updateOne({ _id }, {cod, nome, email, senha: hash});
-            res.redirect('/usuario?s=3');
+            await Usuario.updateOne({ _id }, {nome, email, senha: hash});
+            res.redirect('/usuarios/cadastrar?s=3');
         } else {
             //cadastro
             const novoUsuario = new Usuario({
-                cod: cod,
                 nome: nome,
                 email: email,
                 senha: hash
             });
-
+            console.log('Dados recebidos:', nome, email);
             await novoUsuario.save();
+            
             res.redirect('/usuarios?s=1');
             }
+            
+
     }
 
     static loginGet(req, res){
@@ -55,8 +57,9 @@ class UsuarioController {
 
     static async loginPost(req, res){
         const {email, senha} = req.body;
+        console.log(email);
         const usuario = await Usuario.findOne({email});
-
+        console.log(usuario);
         if (usuario){ // existe o usuário
             if (bcryptjs.compareSync(senha, usuario.senha)){ // senha válida
                 req.session.usuario = usuario.nome;
