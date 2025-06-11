@@ -51,12 +51,14 @@
                                 <a href="/consultas/<%= consulta._id %>" class="btn btn-info btn-sm">
                                     <i class="bi bi-info-circle"></i> Detalhar
                                 </a>
+                                
+                                <a href="/consultas/agendar/<%= consulta._id %>" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil me-2"></i> Atualizar
+                                </a>
+
                                 <a href="/consultas/remover/<%= consulta._id %>" class="btn btn-danger btn-sm"
                                     onclick="return confirm('Deseja realmente remover?')">
                                     <i class="bi bi-trash"></i> Remover
-                                </a>
-                                <a href="/consultas/agendar/<%= consulta._id %>" class="btn btn-warning btn-sm">
-                                    <i class="bi bi-pencil me-2"></i> Atualizar
                                 </a>
                             </div>
                         </div>
