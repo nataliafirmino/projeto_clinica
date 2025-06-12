@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="telefone" class="form-label">Telefone:</label>
-                    <input type="text" class="form-control" value="<%= paciente.telefone %>" required id="telefone" name="telefone">
+                    <input type="tel" class="form-control" value="<%= paciente.telefone %>" required id="telefone" name="telefone" maxlength="15">
                 </div>
                 <div class="col-md-8 mb-3">
                     <label for="logradouro" class="form-label">Logradouro:</label>
@@ -72,11 +72,10 @@
         function cpf2(input) {
             v = input.value;
             v = v.replace(/\D/g, "")                    //Remove tudo o que não é dígito
-            v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
-            v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+            v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígito
+            v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o sexto e o sétimo dígito
             //de novo (para o segundo bloco de números)
-            v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
-            //document.getElementById("cpf").value = v;
+            v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2") //Coloca um hífen entre o nono e o décimo dígito
             input.value = v;
         }
     </script>
