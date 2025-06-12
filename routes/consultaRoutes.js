@@ -4,10 +4,10 @@ const consultaController = require('../controllers/consultaController');
 const auth = require("../middlewares/usuarioAuth");
 
 routes.use(auth);
-routes.get('/', consultaController.relatorio);
+routes.get('/', auth, consultaController.relatorio);
 routes.post('/', consultaController.agendarPost);
-routes.get('/agendar/:_id?', consultaController.agendarGet);
-routes.get('/:_id', consultaController.detalhar);
-routes.get('/remover/:_id', consultaController.remover);
+routes.get('/agendar/:_id?', auth, consultaController.agendarGet);
+routes.get('/:_id', auth, consultaController.detalhar);
+routes.get('/remover/:_id', auth,  consultaController.remover);
 
 module.exports = routes;

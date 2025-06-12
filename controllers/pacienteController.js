@@ -6,7 +6,7 @@ class PacienteController {
         const status = req.query.s;
         const pacientes = await Paciente.find();
         res.render('paciente/relatorio', { status, pacientes });
-    }
+    };
 
     static async cadastrarGet(req, res) {
         const _id = req.params._id;
@@ -16,7 +16,7 @@ class PacienteController {
         }
         const status = req.query.s;
         res.render('paciente/cadastrar', { paciente, status });
-    }
+    };
 
     static async cadastrarPost(req, res) {
         const { cpf,
@@ -59,14 +59,14 @@ class PacienteController {
         const _id = req.params._id;
         const paciente = await Paciente.findOne({ _id })
         res.render('paciente/detalhar', { paciente });
-    }
+    };
 
     static async remover(req, res) {
         const _id = req.params._id;
         const paciente = await Paciente.findOneAndDelete({ _id });
         await Consulta.deleteMany({ paciente: paciente._id });
         res.redirect('/pacientes?s=2');
-    }
+    };
 
 }
 module.exports = PacienteController;

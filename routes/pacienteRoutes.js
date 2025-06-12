@@ -4,10 +4,10 @@ const pacienteController = require('../controllers/pacienteController');
 const auth = require("../middlewares/usuarioAuth");
 
 routes.use(auth);
-routes.get('/', pacienteController.relatorio);
+routes.get('/', auth, pacienteController.relatorio);
 routes.post('/', pacienteController.cadastrarPost);
-routes.get('/cadastrar/:_id?', pacienteController.cadastrarGet);
-routes.get('/:_id', pacienteController.detalhar);
-routes.get('/remover/:_id', pacienteController.remover);
+routes.get('/cadastrar/:_id?', auth, pacienteController.cadastrarGet);
+routes.get('/:_id', auth, pacienteController.detalhar);
+routes.get('/remover/:_id', auth, pacienteController.remover);
 
 module.exports = routes;

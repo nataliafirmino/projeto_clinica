@@ -6,7 +6,7 @@ class UsuarioController {
         const status = req.query.s;
         const usuarios = await Usuario.find();
         res.render('usuario/relatorio', { status, usuarios });
-    }
+    };
 
     static async cadastrarGet(req, res) {
         const _id = req.params._id;
@@ -16,7 +16,7 @@ class UsuarioController {
         }
         const status = req.query.s;
         res.render('usuario/cadastrar', { usuario, status });
-    }
+    };
 
     static async cadastrarPost(req, res){
         const {
@@ -41,10 +41,8 @@ class UsuarioController {
             await novoUsuario.save();
             
             res.redirect('/usuarios?s=1');
-            }
-            
-
-    }
+            }   
+    };
 
     static loginGet(req, res){
         const status = req.query.s;
@@ -53,7 +51,7 @@ class UsuarioController {
             return
         } 
         res.render("usuario/login", {status});
-    }
+    };
 
     static async loginPost(req, res){
         const {email, senha} = req.body;
@@ -70,24 +68,24 @@ class UsuarioController {
         } else{ //e-mail inexistente
             res.redirect("/usuarios/login?s=1");
         }
-    }
+    };
 
     static logout(req, res) {
         req.session.usuario = null;
         res.redirect('/usuarios/login');
-    }
+    };
 
     static async detalhar(req, res) {
         const _id = req.params._id;
         const usuario = await Usuario.findOne({ _id })
         res.render('usuario/detalhar', { usuario });
-    }
+    };
 
     static async remover(req, res) {
         const _id = req.params._id;
         const usuario = await Usuario.deleteOne({ _id });
         res.redirect('/usuarios?s=2');
-    }
+    };
 
 }
 module.exports = UsuarioController;

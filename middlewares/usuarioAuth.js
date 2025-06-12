@@ -4,6 +4,6 @@ function auth(req, res, next){
     } else{
         res.redirect('/usuarios/login');
     }
-}
+};
 
 module.exports = auth;

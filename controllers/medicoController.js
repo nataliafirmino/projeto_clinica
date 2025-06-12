@@ -7,7 +7,7 @@ class MedicoController {
         const status = req.query.s;
         const medicos = await Medico.find()
         res.render('medico/relatorio', { status, medicos });
-    }
+    };
 
     static async cadastrarGet(req, res) {
         const _id = req.params._id;
@@ -17,7 +17,7 @@ class MedicoController {
         }
         const status = req.query.s;
         res.render('medico/cadastrar', { medico, status });
-    }
+    };
 
     static async cadastrarPost(req, res) {
         const { crm,
@@ -59,14 +59,14 @@ class MedicoController {
         console.log(_id);
         const medico = await Medico.findOne({ _id })
         res.render('medico/detalhar', { medico });
-    }
+    };
 
     static async remover(req, res) {
         const _id = req.params._id;
         const medico = await Medico.findOneAndDelete({ _id });
         await Consulta.deleteMany({ medico: medico._id });
         res.redirect('/medicos?s=2');
-    }
+    };
 
 }
 module.exports = MedicoController;

@@ -9,7 +9,7 @@ class ConsultaController {
             .populate('paciente')
             .populate('medico')
         res.render('consulta/relatorio', { status, consultas });
-    }
+    };
 
     static async agendarPost(req, res) {
         const {
@@ -20,7 +20,6 @@ class ConsultaController {
             valor,
             _id
         } = req.body;
-        //const consulta = await Consulta.findOne({_id});
         if (_id) {
             await Consulta.updateOne({ _id }, {cod, paciente, medico, dataConsulta, valor})
             res.redirect('/consultas?s=3');
@@ -54,8 +53,7 @@ class ConsultaController {
         const pacientes = await Paciente.find();
         const medicos = await Medico.find({ status: 'Ativo' });
         res.render('consulta/agendar', { consulta, pacientes, medicos, status });
-    }
-
+    };
 
     static async detalhar(req, res) {
         const _id = req.params._id;
@@ -63,13 +61,13 @@ class ConsultaController {
             .populate('paciente')
             .populate('medico')
         res.render('consulta/detalhar', { consulta });
-    }
+    };
 
     static async remover(req, res) {
         const _id = req.params._id;
         const consulta = await Consulta.findOneAndDelete({_id})
         res.redirect('/consultas?s=2');
-    }
+    };
 
 }
 module.exports = ConsultaController;
