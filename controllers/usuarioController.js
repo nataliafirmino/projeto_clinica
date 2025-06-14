@@ -37,9 +37,7 @@ class UsuarioController {
                 email: email,
                 senha: hash
             });
-            console.log('Dados recebidos:', nome, email);
             await novoUsuario.save();
-            
             res.redirect('/usuarios?s=1');
             }   
     };
@@ -55,9 +53,8 @@ class UsuarioController {
 
     static async loginPost(req, res){
         const {email, senha} = req.body;
-        console.log(email);
         const usuario = await Usuario.findOne({email});
-        console.log(usuario);
+        
         if (usuario){ // existe o usuário
             if (bcryptjs.compareSync(senha, usuario.senha)){ // senha válida
                 req.session.usuario = usuario.nome;

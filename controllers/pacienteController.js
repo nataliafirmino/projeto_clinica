@@ -11,7 +11,7 @@ class PacienteController {
     static async cadastrarGet(req, res) {
         const _id = req.params._id;
         let paciente = {};
-        if (_id) { //atualização
+        if (_id) { 
             paciente = await Paciente.findOne({ _id });
         }
         const status = req.query.s;
@@ -30,8 +30,8 @@ class PacienteController {
             estado,
             _id
         } = req.body;
-        if (_id) {
-            await Paciente.updateOne({ _id }, { cpf, nome, telefone, logradouro, numResidencia, bairro, cidade, estado })
+        if (_id) { //atualização
+            await Paciente.updateOne({ _id }, { cpf, nome, dataNascimento, telefone, logradouro, numResidencia, bairro, cidade, estado })
             res.redirect('/pacientes?s=3');
         } else { //cadastro
             const paciente = await Paciente.findOne({cpf});

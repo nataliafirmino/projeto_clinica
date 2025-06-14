@@ -42,12 +42,12 @@
                         <div class="card-body">
                             <h5 class="card-title"><b>Paciente:</b> <%= consulta.paciente.nome %></h5>
                             <p class="card-text"><b>Médico:</b> <%= consulta.medico.nome %></p>
-                            <p class="card-text"><b>Data da Consulta:</b> <%= new Date(consulta.dataConsulta).toLocaleDateString('pt-BR') %></p>
+                            <p class="card-text"><b>Data da Consulta:</b> <%= new Date(consulta.dataConsulta).toLocaleDateString('pt-BR', {timeZone: 'UTC'}) %></p>
                             <p class="card-text"><b>Valor:</b> R$ <%= consulta.valor %></p>
                             <p class="card-text"><b>Status:</b> <%= consulta.status %></p>
-                            <p class="card-text"><b>Agendado em:</b> <%= new Date(consulta.horaAgendamento).toLocaleString('pt-BR') %></p>
+                            <p class="card-text"><b>Agendado em:</b> <%= new Date(consulta.horaAgendamento).toLocaleDateString('pt-BR', {timeZone: 'UTC'}) %></p>
                             
-                            <div class="d-flex justify-content-between mt-3 gap-2">
+                            <div class="d-flex justify-content-between mt-4 gap-2">
                                 <a href="/consultas/<%= consulta._id %>" class="btn btn-info btn-sm">
                                     <i class="bi bi-info-circle"></i> Detalhar
                                 </a>
@@ -73,7 +73,7 @@
             </button>
         </a>
 
-        <%- include('../partials/rodape') %>
+    <%- include('../partials/rodape') %>
     </div>
 </body>
 </html>

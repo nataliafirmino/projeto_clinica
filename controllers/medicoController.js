@@ -12,7 +12,7 @@ class MedicoController {
     static async cadastrarGet(req, res) {
         const _id = req.params._id;
         let medico = {};
-        if (_id) { // atualização
+        if (_id) { 
             medico = await Medico.findOne({ _id });
         }
         const status = req.query.s;
@@ -29,8 +29,7 @@ class MedicoController {
             status,
             _id
         } = req.body;
-        //const paciente = await Paciente.findOne({ _id });
-        if (_id) {
+        if (_id) { // atualização
             await Medico.updateOne({ _id }, { crm, nome, uf_crm, especialidade, telefone, email, status })
             res.redirect('/medicos?s=3');
 
@@ -56,7 +55,6 @@ class MedicoController {
 
     static async detalhar(req, res) {
         const _id = req.params._id;
-        console.log(_id);
         const medico = await Medico.findOne({ _id })
         res.render('medico/detalhar', { medico });
     };

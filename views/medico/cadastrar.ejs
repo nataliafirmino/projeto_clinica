@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="telefone" class="form-label">Telefone:</label>
-                <input type="text" class="form-control" value="<%= medico.telefone %>" required id="telefone" name="telefone">
+                <input type="text" class="form-control" value="<%= medico.telefone %>" required id="telefone" name="telefone" maxlength="15">
             </div>
             <div class="col-md-4 mb-3">
                 <label for="email" class="form-label">E-mail:</label>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-success"><i class="bi bi-floppy-fill"></i> Salvar</button>
+        <button type="submit" class="btn btn-success"> Salvar</button>
     </form>
     <br>
     <%- include('../partials/rodape') %>

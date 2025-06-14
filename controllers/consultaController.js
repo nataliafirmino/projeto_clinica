@@ -20,7 +20,7 @@ class ConsultaController {
             valor,
             _id
         } = req.body;
-        if (_id) {
+        if (_id) { //atualização
             await Consulta.updateOne({ _id }, {cod, paciente, medico, dataConsulta, valor})
             res.redirect('/consultas?s=3');
         
@@ -46,7 +46,7 @@ class ConsultaController {
     static async agendarGet(req, res) {
         const _id = req.params._id;
         let consulta = {};
-        if (_id) { //atualização
+        if (_id) { 
             consulta = await Consulta.findOne({ _id });
         }
         const status = req.query.s;

@@ -21,7 +21,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><b>CPF:</b> <%= paciente.cpf %></li>
               <li class="list-group-item"><b>Nome:</b> <%= paciente.nome %></li>
-             <li class="list-group-item"><b>Data de Nascimento:</b> <%= new Date(paciente.dataNascimento).toLocaleDateString('pt-BR') %></li>
+              <li class="list-group-item"><b>Data de Nascimento:</b> <%= new Date(paciente.dataNascimento).toLocaleDateString('pt-BR', {timeZone: 'UTC'}) %></li>
               <li class="list-group-item"><b>Telefone:</b> <%= paciente.telefone %></li>
               <li class="list-group-item"><b>Endereço:</b> <%= paciente.logradouro + ", " + paciente.numResidencia + ", " + paciente.bairro + ", " + paciente.cidade + " - " + paciente.estado  %></li>
             </ul>

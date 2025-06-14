@@ -27,7 +27,7 @@
             <div class="row mt-5">
                 <div class="col-md-3 mb-4">
                     <label for="cod" class="form-label">Código da Consulta:</label>
-                    <input type="number" class="form-control" value="<%= consulta.cod %>" id="cod" name="cod">
+                    <input type="number" class="form-control" value="<%= consulta.cod ? consulta.cod : "" %>" <%= consulta.cod ? "readonly" : "" %> id="cod" name="cod">
                 </div>
                 <div class="col-md-8 mb-4">
                     <label for="medico" class="form-label">Médico:</label>
@@ -50,7 +50,7 @@
                         <% pacientes.forEach(paciente=> { %>
                             <option value="<%= paciente._id %>" <%=consulta.paciente==paciente._id ? 'selected' : '' %>>
                                 <%= paciente.cpf %> - <%= paciente.nome %> - <%= new
-                                            Date(paciente.dataNascimento).toLocaleDateString('pt-BR') %>
+                                            Date(paciente.dataNascimento).toLocaleDateString('pt-BR', {timeZone: 'UTC'}) %>
                             </option>
                             <% }) %>
                     </select>
