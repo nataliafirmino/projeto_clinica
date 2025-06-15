@@ -16,9 +16,16 @@
             
             <% if (status == '1') { %>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <b>Erro ao cadastrar!</b>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <b>Erro ao cadastrar!</b>
                 </div>
+            <% } %>
+
+            <% if (status == '2') { %>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <b>E-mail já cadastrado. Cadastre um novo usuário.</b>
+            </div>
             <% } %>
 
             <h2 class="text-center mb-4">Cadastrar Usuários</h2>

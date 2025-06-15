@@ -27,12 +27,15 @@ class UsuarioController {
         } = req.body;
         const salt = bcryptjs.genSaltSync();
         const hash = bcryptjs.hashSync(senha, salt);
-        if (_id) {
+        if (_id) { // atualização
             await Usuario.updateOne({ _id }, {nome, email, senha: hash});
-            res.redirect('/usuarios/cadastrar?s=3');
-        } else {
-            //cadastro
-            const novoUsuario = new Usuario({
+            res.redirect('/usuarios?s=3');
+        } else { //cadastro
+            const usuario = await Usuario.findOne({email});
+            if (usuario){
+                res.redirect('/usuarios/cadastrar?s=2');
+            } else{
+                const novoUsuario = new Usuario({
                 nome: nome,
                 email: email,
                 senha: hash
@@ -40,6 +43,7 @@ class UsuarioController {
             await novoUsuario.save();
             res.redirect('/usuarios?s=1');
             }   
+        }    
     };
 
     static loginGet(req, res){
