@@ -34,7 +34,7 @@
                     <select class="form-select" required id="medico" name="medico">
                         <option value="" disabled <%=!consulta.medico ? 'selected' : '' %>>Selecione um médico</option>
                         <% medicos.forEach(medico=> { %>
-                            <option value="<%= medico._id %>" <%=consulta.medico==medico._id ? 'selected' : '' %>>
+                            <option value="<%= medico._id %>" <%= consulta.medico == String(medico._id) ? 'selected' : '' %>>
                                 Dr(a). <%= medico.nome %> - <%= medico.crm + '/' + medico.uf_crm %> - <%=
                                             medico.especialidade %>
                             </option>
@@ -48,7 +48,7 @@
                         <option value="" disabled <%=!consulta.paciente ? 'selected' : '' %>>Selecione um paciente
                         </option>
                         <% pacientes.forEach(paciente=> { %>
-                            <option value="<%= paciente._id %>" <%=consulta.paciente==paciente._id ? 'selected' : '' %>>
+                            <option value="<%= paciente._id %>" <%= consulta.paciente == String(paciente._id) ? 'selected' : '' %>>
                                 <%= paciente.cpf %> - <%= paciente.nome %> - <%= new
                                             Date(paciente.dataNascimento).toLocaleDateString('pt-BR', {timeZone: 'UTC'}) %>
                             </option>

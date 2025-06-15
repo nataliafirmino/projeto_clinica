@@ -20,7 +20,7 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><b>Paciente:</b> <%= consulta.paciente.nome %></li>
-              <li class="list-group-item"><b>Médico:</b> <%= consulta.medico.nome %></li>
+              <li class="list-group-item"><b>Médico:</b> <%= consulta.medico.nome %> - <%= consulta.medico.especialidade %></li>
               <li class="list-group-item"><b>Data da Consulta:</b> <%= new Date(consulta.dataConsulta).toLocaleDateString('pt-BR', {timeZone: 'UTC'}) %></li>
               <li class="list-group-item"><b>Valor da Consulta:</b> R$ <%= consulta.valor %></li>
               <li class="list-group-item"><b>Status:</b> <%= consulta.status %></li>
