@@ -3,6 +3,7 @@ const routes = express.Router();
 const usuarioController = require('../controllers/usuarioController');
 const auth = require("../middlewares/usuarioAuth");
 
+routes.use(auth);
 routes.get('/', auth,  usuarioController.relatorio);
 routes.post('/', usuarioController.cadastrarPost);
 routes.get('/cadastrar/:_id?', usuarioController.cadastrarGet);

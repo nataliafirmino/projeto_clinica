@@ -56,16 +56,16 @@
                     </select>
                 </div>
 
-                <div class="col-md-3 mb-4">
+                <div class="col-md-2 mb-3">
                     <label for="dataConsulta" class="form-label">Data da Consulta:</label>
                     <input type="date" class="form-control"
                         value="<%= consulta.dataConsulta ? consulta.dataConsulta.toISOString().split('T')[0] : "" %>"
                         required id="dataConsulta" name="dataConsulta">
                 </div>
 
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-3">
                     <label for="valor" class="form-label">Valor da Consulta (R$):</label>
-                    <input type="number" class="form-control" value="<%= consulta.valor %>" id="valor" name="valor">
+                    <input type="number" class="form-control" value="<%= consulta.valor %>" required id="valor" name="valor">
                 </div>
             </div>
 

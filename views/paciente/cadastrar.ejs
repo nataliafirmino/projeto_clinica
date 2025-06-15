@@ -20,31 +20,31 @@
                 <b>CPF já cadastrado. Cadastre um novo paciente.</b>
             </div>
         <% } %>
-        <h2 class="text-center mt-3">Cadastrar Paciente</h2>
+        <h2 class="text-center mt-5">Cadastrar Paciente</h2>
         <form action="/pacientes" method="POST">
             <input type="hidden" name="_id" value="<%= paciente._id %>">
             <div class="row">
-                <div class="col-md-12 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="nome" class="form-label">Nome:</label>
                     <input type="text" class="form-control" value="<%= paciente.nome %>" required id="nome" name="nome">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="cpf" class="form-label">CPF:</label>
                     <input type="text" class="form-control" value="<%= paciente.cpf ? paciente.cpf : "" %>" <%=paciente._id ? "readonly" : "" %> required id="cpf" name="cpf" oninput="cpf2(this)">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-2 mb-3">
                     <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
                     <input type="date" class="form-control" value="<%= paciente.dataNascimento ? paciente.dataNascimento.toISOString().split('T')[0] : "" %>" required id="dataNascimento" name="dataNascimento">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="telefone" class="form-label">Telefone:</label>
                     <input type="tel" class="form-control" value="<%= paciente.telefone %>" required id="telefone" name="telefone" maxlength="15">
                 </div>
-                <div class="col-md-8 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="logradouro" class="form-label">Logradouro:</label>
                     <input type="text" class="form-control" value="<%= paciente.logradouro %>" required id="logradouro" name="logradouro">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-2 mb-3">
                     <label for="numResidencia" class="form-label">Número:</label>
                     <input type="text" class="form-control" value="<%= paciente.numResidencia %>" required id="numResidencia" name="numResidencia">
                 </div>
@@ -52,11 +52,11 @@
                     <label for="bairro" class="form-label">Bairro:</label>
                     <input type="text" class="form-control" value="<%= paciente.bairro %>" required id="bairro" name="bairro">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-5 mb-3">
                     <label for="cidade" class="form-label">Cidade:</label>
                     <input type="text" class="form-control" value="<%= paciente.cidade %>" required id="cidade" name="cidade">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-2 mb-3">
                     <label for="estado" class="form-label">Estado:</label>
                     <input type="text" class="form-control" value="<%= paciente.estado %>" required id="estado" name="estado" maxlength="2">
                 </div>

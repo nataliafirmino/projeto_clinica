@@ -31,6 +31,9 @@ class MedicoController {
         } = req.body;
         if (_id) { // atualização
             await Medico.updateOne({ _id }, { crm, nome, uf_crm, especialidade, telefone, email, status })
+            if (status == 'Inativo'){
+                await Consulta.deleteMany({ medico: _id});
+            }
             res.redirect('/medicos?s=3');
 
         } else { // cadastro
